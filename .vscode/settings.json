@@ -1,0 +1,54 @@
+{
+  // Committed on purpose: these three lines are what make "clone and open" work for a newcomer.
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+  "python.terminal.activateEnvironment": true,
+  "jupyter.kernels.filter": [
+    { "path": "${workspaceFolder}/.venv/Scripts/python.exe", "type": "pythonEnvironment" }
+  ],
+
+  // Notebook ergonomics for a long teaching notebook.
+  "notebook.lineNumbers": "on",
+  "notebook.output.textLineLimit": 60,
+  "notebook.output.scrolling": true,
+  "notebook.outline.showCodeCells": true,
+  "notebook.compactView": false,
+  "jupyter.askForKernelRestart": false,
+  "jupyter.interactiveWindow.creationMode": "perFile",
+
+  "[python]": {
+    "editor.rulers": [100],
+    "editor.formatOnSave": false
+  },
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  // The venv holds ~65k files. Git ignores it (see .gitignore), but VS Code would still show it in the
+  // explorer, crawl it on every search, and put a file watcher on all of it - which is what makes the
+  // window feel like it is tracking thousands of files. These three lists are separate on purpose:
+  // explorer visibility, search scope, and the OS watcher are independent.
+  "files.exclude": {
+    "**/.venv": true,
+    "**/__pycache__": true,
+    "**/.ipynb_checkpoints": true,
+    "**/*.egg-info": true
+  },
+  "search.exclude": {
+    "**/.venv": true,
+    "**/__pycache__": true,
+    "**/.ipynb_checkpoints": true,
+    "**/.git": true
+  },
+  "files.watcherExclude": {
+    "**/.venv/**": true,
+    "**/__pycache__/**": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.cache/**": true
+  },
+
+  // Pylance: analyse the project, not the 65k library files. Imports still resolve, because the
+  // interpreter path above tells it where site-packages lives.
+  "python.analysis.exclude": ["**/.venv/**", "**/__pycache__/**"],
+  "python.analysis.indexing": true,
+  "python.analysis.packageIndexDepth": 2
+}

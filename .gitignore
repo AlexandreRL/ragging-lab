@@ -1,0 +1,38 @@
+# ---- secrets -----------------------------------------------------------------------------------
+.env
+.env.local
+*.key
+
+# ---- virtual environments ----------------------------------------------------------------------
+.venv/
+venv/
+env/
+
+# ---- python ------------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# ---- jupyter -----------------------------------------------------------------------------------
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# ---- model / data caches -----------------------------------------------------------------------
+.cache/
+hf_cache/
+*.faiss
+*.index
+
+# ---- editors / OS ------------------------------------------------------------------------------
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# VS Code: the shared workspace settings ARE committed on purpose (they point newcomers at the
+# right interpreter and kernel). Personal overrides go in settings.local.json, which is ignored.
+.vscode/settings.local.json
+.vscode/*.log

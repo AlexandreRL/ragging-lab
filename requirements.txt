@@ -1,0 +1,47 @@
+# ragging-lab dependencies
+#
+# Install into a project venv (see docs/SETUP.md for the full walkthrough):
+#
+#   py -3.12 -m venv .venv
+#   .venv\Scripts\python -m pip install --upgrade pip
+#   .venv\Scripts\python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+#   .venv\Scripts\python -m pip install -r requirements.txt
+#
+# torch is installed separately and FIRST, from the CPU wheel index: the default PyPI wheel pulls
+# CUDA payloads you do not need for this lab (and ~2 GB extra download).
+
+# ---- notebook runtime ---------------------------------------------------------------------------
+ipykernel>=7.0
+ipywidgets>=8.1
+jupyterlab>=4.4
+notebook>=7.4
+
+# ---- numerics, data, plotting -------------------------------------------------------------------
+numpy>=2.0
+pandas>=2.2
+matplotlib>=3.9
+scikit-learn>=1.5          # TruncatedSVD/TF-IDF fallback embedder + the independent NDCG cross-check
+scipy>=1.13                # Wilcoxon cross-check of the paired bootstrap
+tabulate>=0.9
+
+# ---- retrieval ----------------------------------------------------------------------------------
+rank-bm25==0.2.2           # BM25Okapi, the sparse baseline
+faiss-cpu>=1.9             # the production reference for section 7.8
+sentence-transformers>=3.3 # bi-encoder (all-MiniLM-L6-v2) + cross-encoder reranker
+
+# ---- LLM layer (optional at runtime: the notebook degrades gracefully without a key) ------------
+anthropic>=2.0             # Claude: generation, listwise reranking, LLM-as-judge groundedness
+python-dotenv>=1.0
+
+# ---- openai is NOT needed by this notebook ------------------------------------------------------
+# The original interview notebook (alexandre_ai_engineer_rag_with_evaluation.ipynb) imports it.
+# Uncomment if you work that notebook as written.
+# openai>=1.55
+
+# ---- Windows note: Smart App Control --------------------------------------------------------------
+# On Windows 11 with Smart App Control ON, the newest `regex` wheels ship an unsigned .pyd that App
+# Control blocks, which breaks `import transformers` with:
+#   ImportError: DLL load failed while importing _regex
+# regex 2025.11.3 is signed/reputable enough to load AND satisfies transformers>=2025.10.22.
+# Remove the pin if you are not on Windows or App Control is off.
+regex==2025.11.3 ; sys_platform == "win32"

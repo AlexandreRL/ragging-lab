@@ -1,0 +1,12 @@
+{
+  // VS Code offers these when the folder is opened. The first three are required to run the
+  // notebooks; the rest are quality-of-life.
+  "recommendations": [
+    "ms-python.python",
+    "ms-toolsai.jupyter",
+    "ms-python.vscode-pylance",
+    "ms-toolsai.jupyter-renderers",
+    "ms-toolsai.vscode-jupyter-cell-tags",
+    "charliermarsh.ruff"
+  ]
+}

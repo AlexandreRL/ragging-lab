@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📖 Setup and troubleshooting
+    url: https://github.com/AlexandreRL/ragging-lab/blob/main/docs/SETUP.md
+    about: Install problems, kernels, and the known platform traps are probably covered here.
+  - name: 🧭 Notebook tour
+    url: https://github.com/AlexandreRL/ragging-lab/blob/main/docs/NOTEBOOK_TOUR.md
+    about: What each section proves, and which cell to steal.
+  - name: 📚 Glossary
+    url: https://github.com/AlexandreRL/ragging-lab/blob/main/docs/GLOSSARY.md
+    about: Every metric and index term in one line, with its failure mode.
