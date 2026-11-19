@@ -20,6 +20,21 @@ a release train.
 | **`testing`** | A candidate for `main`, being verified | Maintainer, from `dev` | Expected to work; may be mid-verification |
 | **`dev`** | Day-to-day integration — **open your PR here** | Anyone, via PR | Should run, but may be briefly rough |
 
+### What is actually enforced
+
+A GitHub ruleset (`require PR`, active) backs this up on **`main`** only:
+
+| Rule on `main` | Effect |
+|---|---|
+| Pull request required | No direct pushes to `main`, including by the maintainer. **0 approvals required**, so a solo maintainer can merge their own PR. |
+| No force-push | `main`'s history cannot be rewritten |
+| No deletion | `main` cannot be deleted |
+
+**`dev` and `testing` accept direct pushes.** Day-to-day work does not need the PR ceremony; the gate sits
+where the promise is, on the branch people clone. Outside contributors still go through a PR into `dev`,
+because they do not have write access in the first place — the ruleset is not what stops them, repository
+permissions are.
+
 ### Why `testing` exists at all
 
 Because "the notebook runs" is the only test this repo has, and verifying it properly means a **fresh kernel,
