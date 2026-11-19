@@ -1,10 +1,10 @@
 {
-  // Committed on purpose: these three lines are what make "clone and open" work for a newcomer.
+  // Committed on purpose: these two lines are what make "clone and open" work for a newcomer.
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
   "python.terminal.activateEnvironment": true,
-  "jupyter.kernels.filter": [
-    { "path": "${workspaceFolder}/.venv/Scripts/python.exe", "type": "pythonEnvironment" }
-  ],
+  // NOTE: do not add `jupyter.kernels.filter` / `jupyter.kernels.excludePythonEnvironments` here.
+  // Despite the name, it is a list of environments to HIDE from the kernel picker - listing .venv in
+  // it makes the one kernel you want impossible to select.
 
   // Notebook ergonomics for a long teaching notebook.
   "notebook.lineNumbers": "on",

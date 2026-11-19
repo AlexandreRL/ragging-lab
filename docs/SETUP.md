@@ -75,8 +75,13 @@ This brings in JupyterLab, numpy/pandas/matplotlib/scikit-learn/scipy, `rank_bm2
 So the notebook can find this exact interpreter by name:
 
 ```powershell
-.venv\Scripts\python -m ipykernel install --user --name ragging-lab --display-name "Python (ragging-lab)"
+.venv\Scripts\python -m ipykernel install --sys-prefix --name ragging-lab --display-name "Python (ragging-lab)"
 ```
+
+> `--sys-prefix` registers the kernel *inside* `.venv`, which is both tidier and more reliable than
+> `--user`. If your Python came from the **Microsoft Store**, `--user` writes to a redirected sandbox
+> path (`...\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_*\LocalCache\Roaming\...`)
+> that editors do not scan, and the kernel silently never appears in the picker.
 
 Verify:
 
@@ -98,8 +103,11 @@ Verify:
    ```
 2. `code .` in the repo root.
 3. Open `retrieval_eval_and_vector_search_internals.ipynb`.
-4. Click the kernel picker, top right → **Python (ragging-lab)**. (`.vscode/settings.json` already points
-   the interpreter at `.venv`, so it is usually pre-selected.)
+4. Click **Select Kernel** (top right) → **Python Environments…** → the `.venv` entry, shown as
+   something like `.venv (Python 3.12.10)`. `.vscode/settings.json` points the interpreter at `.venv`,
+   so it is usually already selected and you can skip this.
+   *If the picker offers `Python (ragging-lab)` under **Jupyter Kernel…**, that is the same interpreter
+   and works too.*
 5. **Run All.** Expect ~90 seconds; the slowest single cell is §7.5, the pure-Python HNSW build (~12-15 s).
 
 ### JupyterLab
@@ -108,7 +116,7 @@ Verify:
 .venv\Scripts\python -m jupyter lab
 ```
 
-Then pick the **Python (ragging-lab)** kernel from the launcher.
+Then pick **Python (ragging-lab)** (or **Python 3 (ipykernel)**) from the launcher.
 
 ---
 

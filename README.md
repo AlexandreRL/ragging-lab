@@ -82,17 +82,17 @@ py -3.12 -m venv .venv
 .venv\Scripts\python -m pip install --upgrade pip
 .venv\Scripts\python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
 .venv\Scripts\python -m pip install -r requirements.txt
-.venv\Scripts\python -m ipykernel install --user --name ragging-lab --display-name "Python (ragging-lab)"
+.venv\Scripts\python -m ipykernel install --sys-prefix --name ragging-lab --display-name "Python (ragging-lab)"
 
 # macOS / Linux
 python3.12 -m venv .venv
 .venv/bin/python -m pip install --upgrade pip
 .venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python -m ipykernel install --user --name ragging-lab --display-name "Python (ragging-lab)"
+.venv/bin/python -m ipykernel install --sys-prefix --name ragging-lab --display-name "Python (ragging-lab)"
 ```
 
 Then open [`retrieval_eval_and_vector_search_internals.ipynb`](retrieval_eval_and_vector_search_internals.ipynb)
-in VS Code, pick the **`Python (ragging-lab)`** kernel, and `Run All`. About **90 seconds** end to end.
+in VS Code, make sure the kernel is the project `.venv`, and `Run All`. About **90 seconds** end to end.
 
 The notebook is committed **with its outputs**, so you can also just read it on GitHub before running
 anything.
